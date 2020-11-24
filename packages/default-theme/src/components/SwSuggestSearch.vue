@@ -38,7 +38,7 @@
       v-if="isShowMoreAvailable"
       class="sf-button--secondary sf-button--full-width"
       @click="$emit('search')"
-      >See more</Button
+      >{{ $t("See more") }}</Button
     >
   </div>
 </template>
@@ -82,7 +82,9 @@ export default {
   directives: { clickOutside },
   computed: {
     title() {
-      return `${this.searchPhrase} (${this.totalFound} found)`
+      return `${this.searchPhrase} (${this.$t("{qty} found", {
+        qty: this.totalFound,
+      })})`
     },
     isShowMoreAvailable() {
       return this.totalFound > 5
